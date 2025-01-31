@@ -36,7 +36,7 @@ python demo.py --dataset='Indian' --patches=7 --flag_test='test'
 
 # ⭐ Citation
 
-**Please kindly cite the papers if this code is useful and helpful for your research.**
+**Please kindly cite the paper if this code is useful and helpful for your research.**
 
 Zhu Han, Jin Yang, Lianru Gao, Zhiqiang Zeng, Bing Zhang, Jocelyn Chanussot. Subpixel Spectral Variability Network for Hyperspectral Image Classification, IEEE Transactions on Geoscience and Remote Sensing, doi: 10.1109/TGRS.2025.3535749.
 
