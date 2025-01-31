@@ -104,8 +104,7 @@ class RelPos2d(nn.Module):
         self.heads_range = heads_range
         self.num_heads = num_heads
 
-        decay = torch.log(1 - 2 ** (-initial_value - heads_range * torch.arange(num_heads, dtype=torch.float) / num_heads)) ## gamma is the original setting
-        # decay = 0.5*torch.ones(num_heads)  ## gamma is fixed
+        decay = torch.log(1 - 2 ** (-initial_value - heads_range * torch.arange(num_heads, dtype=torch.float) / num_heads))
 
         self.register_buffer('angle', angle)
         self.register_buffer('decay', decay)
@@ -355,7 +354,6 @@ class RetBlock(nn.Module):
             self.gamma_2 = nn.Parameter(layer_init_values * torch.ones(1, 1, 1, embed_dim), requires_grad=True)
 
     def forward(self, x: torch.Tensor, incremental_state=None, chunkwise_recurrent=False, retention_rel_pos=None):
-        # x = x + self.pos(x) # delete this
         if self.layerscale:
             x = x + self.drop_path(self.gamma_1 * self.retention(self.retention_layer_norm(x), retention_rel_pos, chunkwise_recurrent, incremental_state))
             x = x + self.drop_path(self.gamma_2 * self.ffn(self.final_layer_norm(x)))
