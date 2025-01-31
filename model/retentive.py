@@ -73,12 +73,6 @@ class PatchEmbed(nn.Module):
             nn.Conv2d(in_chans, embed_dim//2, 3, 1, 1),
             nn.BatchNorm2d(embed_dim//2),
             nn.GELU(),
-            # nn.Conv2d(embed_dim//2, embed_dim//2, 3, 1, 1),
-            # nn.BatchNorm2d(embed_dim//2),
-            # nn.GELU(),
-            # nn.Conv2d(embed_dim//2, embed_dim, 3, 2, 1),
-            # nn.BatchNorm2d(embed_dim),
-            # nn.GELU(),
             nn.Conv2d(embed_dim//2, embed_dim, 3, 1, 1),
             nn.BatchNorm2d(embed_dim)
         )
